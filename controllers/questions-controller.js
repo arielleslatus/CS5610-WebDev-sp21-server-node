@@ -19,5 +19,4 @@ module.exports = (app) => {
     app.get("/api/questions", findAllQuestions);
     app.get("/api/quizzes/:qid/questions", findQuestionsForQuiz);
     app.get("/api/quizzes/:qid/questions/:questId", findQuestionById);
-
 };
