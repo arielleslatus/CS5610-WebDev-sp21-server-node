@@ -1,16 +1,29 @@
 const quizzes = require("./quizzes");
 
+const quizzesModel = require("../../db/quizzes/quizzes-model")
+
 const createQuiz = () => {};
 
+// Assignment 7:
+// const findAllQuizzes = () => {
+//     return quizzes;
+// };
+//
+// const findQuizById = (qid) => {
+//     return quizzes.find((quiz) => {
+//         return (quiz._id === qid);
+//     });
+// };
+
+
+// Assignment 8:
 const findAllQuizzes = () => {
-    return quizzes;
-};
+    return quizzesModel.find()
+}
 
 const findQuizById = (qid) => {
-    return quizzes.find((quiz) => {
-        return (quiz._id === qid);
-    });
-};
+    return quizzesModel.findById(qid)
+}
 
 const updateQuiz = () => {};
 
