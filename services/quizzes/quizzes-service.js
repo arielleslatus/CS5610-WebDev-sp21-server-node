@@ -22,7 +22,10 @@ const findAllQuizzes = () => {
 }
 
 const findQuizById = (qid) => {
-    return quizzesModel.findById(qid)
+    return quizzesModel
+        .findById(qid)
+        .populate("questions")
+        .exec()
 }
 
 const updateQuiz = () => {};

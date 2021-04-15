@@ -15,6 +15,12 @@ const createQuestionForQuiz = () => {};
 //         return (question.quizId === quizId);
 //     });
 // };
+//
+// const findQuestionById = (questId) => {
+//     return questions.find((question) => {
+//         return (question._id === questId);
+//     });
+// };
 
 // Assignment 8:
 const findAllQuestions = () => {
@@ -26,9 +32,7 @@ const findQuestionsForQuiz = (qzid) => {
 };
 
 const findQuestionById = (questId) => {
-    return questions.find((question) => {
-        return (question._id === questId);
-    });
+    return questionsModel.findById(questId);
 };
 
 const updateQuestion = () => {};
