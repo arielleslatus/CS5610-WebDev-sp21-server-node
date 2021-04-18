@@ -4,6 +4,14 @@ const app = express()
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/whiteboard', {useNewUrlParser: true, useUnifiedTopology: true})
 
+const session = require('express-session')
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialization: true,
+    //cookie: { secure: true }
+}))
+
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers',
@@ -18,5 +26,6 @@ demos(app);
 
 require("./controllers/quizzes-controller")(app);
 require("./controllers/questions-controller")(app);
+require("./controllers/users-controller")(app);
 
 app.listen(process.env.PORT || 3001)
