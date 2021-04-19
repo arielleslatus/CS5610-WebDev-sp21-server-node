@@ -16,16 +16,14 @@ module.exports = (app) => {
 
     // Assignment 8:
     const findAllQuizzes = (req, res) => {
-        quizzesService.findAllQuizzes().then((quizzes) => { // asynchronous
-            res.send(quizzes);
-        })
+        quizzesService.findAllQuizzes()
+            .then(allQuizzes => res.json(allQuizzes)) // asynchronous
     }
 
     const findQuizById = (req, res) => {
         const quizId = req.params['qid'];
-        quizzesService.findQuizById(quizId).then((quiz) => {
-            res.send(quiz);
-        })
+        quizzesService.findQuizById(quizId)
+            .then(quiz => res.json(quiz))
     }
 
     app.get("/api/quizzes", findAllQuizzes);

@@ -1,5 +1,5 @@
 //const questions = require("./questions");
-const questionsModel = require("../../db/models/questions/questions-model")
+const questionsDao = require("../../db/daos/questions-dao")
 
 const createQuestion = () => {};
 
@@ -24,15 +24,15 @@ const createQuestionForQuiz = () => {};
 
 // Assignment 8:
 const findAllQuestions = () => {
-    return questionsModel.find();
+    return questionsDao.findAllQuestions();
 };
 
 const findQuestionsForQuiz = (qzid) => {
-    return questionsModel.find({quizId: qzid})
+    return questionsDao.findQuestionsForQuiz(qzid)
 };
 
-const findQuestionById = (questId) => {
-    return questionsModel.findById(questId);
+const findQuestionById = (qid) => {
+    return questionsDao.findQuestionById(qid);
 };
 
 const updateQuestion = () => {};
@@ -40,11 +40,11 @@ const updateQuestion = () => {};
 const deleteQuestion = () => {};
 
 module.exports = {
-    createQuestion,
-    createQuestionForQuiz,
+    //createQuestion,
+    //createQuestionForQuiz,
     findAllQuestions,
     findQuestionsForQuiz,
-    findQuestionById,
-    updateQuestion,
-    deleteQuestion
+    findQuestionById
+    //updateQuestion,
+    //deleteQuestion
 };

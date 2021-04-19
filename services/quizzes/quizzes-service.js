@@ -1,6 +1,6 @@
 const quizzes = require("./quizzes");
 
-const quizzesModel = require("../../db/models/quizzes/quizzes-model")
+const quizzesDao = require("../../db/daos/quizzes-dao")
 
 const createQuiz = () => {};
 
@@ -18,12 +18,12 @@ const createQuiz = () => {};
 
 // Assignment 8:
 const findAllQuizzes = () => {
-    return quizzesModel.find()
+    return quizzesDao.findAllQuizzes()
 }
 
 const findQuizById = (qid) => {
-    return quizzesModel
-        .findById(qid)
+    return quizzesDao
+        .findQuizById(qid)
         .populate("questions")
         .exec()
 }
@@ -33,9 +33,9 @@ const updateQuiz = () => {};
 const deleteQuiz = () => {};
 
 module.exports = {
-    createQuiz,
+    //createQuiz,
     findAllQuizzes,
-    findQuizById,
-    updateQuiz,
-    deleteQuiz
+    findQuizById
+    //updateQuiz,
+    //deleteQuiz
 };

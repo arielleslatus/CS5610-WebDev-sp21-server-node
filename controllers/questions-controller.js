@@ -15,22 +15,20 @@ module.exports = (app) => {
 
     // Assignment 8:
     const findAllQuestions = (req, res) => {
-        questionsService.findAllQuestions().then((questions) => {
-            res.send(questions);
-        })
+        questionsService.findAllQuestions()
+            .then((questions) => res.json(questions))
     };
 
     const findQuestionsForQuiz = (req, res) => {
         const quizId = req.params.qid; // quiz Id
-        questionsService.findQuestionsForQuiz(quizId).then((questions) => {
-            res.send(questions);
-        })
+        questionsService.findQuestionsForQuiz(quizId)
+            .then((questions) => res.json(questions))
 
     };
     const findQuestionById = (req, res) => {
         const questionId = req.params['questId'];
-        const question = questionsService.findQuestionById(questionId);
-        res.send(question);
+        questionsService.findQuestionById(questionId)
+            .then(question => res.json(question));
     };
 
     app.get("/api/questions", findAllQuestions);
