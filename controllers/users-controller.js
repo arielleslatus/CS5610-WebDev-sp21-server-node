@@ -1,7 +1,7 @@
 const usersService = require("../services/users/users-service")
 
 module.exports = (app) => {
-    const usersModel = require("../db/users/users-model")
+    const usersModel = require("../db/models/users/users-model")
 
     const register = (req, res) => {
         const user = req.body;
@@ -10,6 +10,7 @@ module.exports = (app) => {
                 req.session['currentUser'] = actualUser;
                 res.send(actualUser);
             })
+
     }
 
     const login = (req, res) => {
@@ -58,6 +59,17 @@ module.exports = (app) => {
         }
     };
 
+    const findAllUsers = (req, res) => {
+        //const currentUser = req.session["profile"];
+        //if(currentUser && currentUser.role === "ADMIN") {
+            usersService.findAllUsers()
+                .then((users) => res.send(users))
+        //} else {
+        //    res.send(403)
+        //}
+
+    };
+
 
 
     app.post("/api/register", register)
@@ -65,6 +77,7 @@ module.exports = (app) => {
     app.post("/api/logout", logout)
     app.post("/api/profile", profile)
     app.post("/api/users", createUser)
+    app.get("/api/users", findAllUsers)
 
 
 }

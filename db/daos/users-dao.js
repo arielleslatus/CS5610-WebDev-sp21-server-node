@@ -1,4 +1,4 @@
-const usersModel = require("../users/users-model")
+const usersModel = require("../models/users/users-model")
 
 const findAllUsers = () => {
     return usersModel.find();
@@ -20,10 +20,11 @@ const createUser = (user) => {
     return usersModel.create(user);
 }
 
+
 module.exports = {
     findAllUsers,
     findUserById,
     findUserByUsername,
     findUserByCredentials,
-    createUser
+    createUser,
 }

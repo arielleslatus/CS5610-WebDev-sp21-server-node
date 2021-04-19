@@ -1,6 +1,6 @@
 const quizzes = require("./quizzes");
 
-const quizzesModel = require("../../db/quizzes/quizzes-model")
+const quizzesModel = require("../../db/models/quizzes/quizzes-model")
 
 const createQuiz = () => {};
 

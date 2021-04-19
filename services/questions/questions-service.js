@@ -1,5 +1,5 @@
 //const questions = require("./questions");
-const questionsModel = require("../../db/questions/questions-model")
+const questionsModel = require("../../db/models/questions/questions-model")
 
 const createQuestion = () => {};
 
