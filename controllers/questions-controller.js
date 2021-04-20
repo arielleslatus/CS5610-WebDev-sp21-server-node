@@ -26,12 +26,12 @@ module.exports = (app) => {
 
     };
     const findQuestionById = (req, res) => {
-        const questionId = req.params['questId'];
+        const questionId = req.params.questId;
         questionsService.findQuestionById(questionId)
             .then(question => res.json(question));
     };
 
+    app.get("/api/quizzes/:qid/questions/:questId", findQuestionById);
     app.get("/api/questions", findAllQuestions);
     app.get("/api/quizzes/:qid/questions", findQuestionsForQuiz);
-    app.get("/api/quizzes/:qid/questions/:questId", findQuestionById);
 };

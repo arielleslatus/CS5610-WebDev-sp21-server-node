@@ -1,11 +1,11 @@
 const quizzesModel = require('../models/quizzes/quizzes-model')
 
 const findAllQuizzes = () => {
-    quizzesModel.find()
+    return quizzesModel.find()
 };
 
 const findQuizById = (quizId) => {
-    quizzesModel.findById(quizId)
+    return quizzesModel.findById(quizId)
 };
 
 module.exports = {

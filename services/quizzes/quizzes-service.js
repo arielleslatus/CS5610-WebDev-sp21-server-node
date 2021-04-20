@@ -1,5 +1,3 @@
-const quizzes = require("./quizzes");
-
 const quizzesDao = require("../../db/daos/quizzes-dao")
 
 const createQuiz = () => {};
