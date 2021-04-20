@@ -6,7 +6,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/whiteboard', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
 
 const session = require('express-session');
 app.use(session({
@@ -33,7 +33,5 @@ require("./controllers/questions-controller")(app);
 require("./controllers/quiz-attempts-controller")(app);
 require("./controllers/users-controller")(app);
 
-app.listen(uri)
-
-
+app.listen(process.env.PORT)
 const uri = process.env.MONGODB_URI;
