@@ -10,8 +10,8 @@ require('dotenv').config({ path: '.env' });
 //const mongoose = require('mongoose');
 //mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
 
-const MONGO_URI = process.env.MONGO_URI;
-const mongoose = require('mongoose'); mongoose.connect(MONGO_URI,{useNewUrlParser: true, useUnifiedTopology: true}); 
+const MONGODB_URI = process.env.MONGODB_URI;
+const mongoose = require('mongoose'); mongoose.connect(MONGODB_URI,{useNewUrlParser: true, useUnifiedTopology: true}); 
 
 
 const session = require('express-session');
