@@ -33,6 +33,6 @@ require("./controllers/questions-controller")(app);
 require("./controllers/quiz-attempts-controller")(app);
 require("./controllers/users-controller")(app);
 
-require('dotenv').config();
-app.listen(process.env.PORT || 3001)
 const uri = process.env.MONGODB_URI;
+require('dotenv').config();
+app.listen(uri || 3001)
