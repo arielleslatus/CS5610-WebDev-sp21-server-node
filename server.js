@@ -8,6 +8,9 @@ app.use(bodyParser.json());
 const mongoose = require('mongoose');
 mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
 
+//const mongoose = require('mongoose'); mongoose.connect(MONGO_DB_URI,{useNewUrlParser: true, useUnifiedTopology: true}); 
+
+
 const session = require('express-session');
 app.use(session({
     secret: 'keyboard cat',
@@ -35,4 +38,4 @@ require("./controllers/users-controller")(app);
 
 const uri = process.env.MONGODB_URI;
 require('dotenv').config();
-app.listen(uri || 3001)
+app.listen(process.env.PORT || 3001)
