@@ -5,10 +5,13 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-const mongoose = require('mongoose');
-mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
+require('dotenv').config({ path: '.env' });
 
-//const mongoose = require('mongoose'); mongoose.connect(MONGO_DB_URI,{useNewUrlParser: true, useUnifiedTopology: true}); 
+//const mongoose = require('mongoose');
+//mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
+
+const MONGO_URI = process.env.MONGO_URI;
+const mongoose = require('mongoose'); mongoose.connect(MONGO_URI,{useNewUrlParser: true, useUnifiedTopology: true}); 
 
 
 const session = require('express-session');
@@ -36,6 +39,5 @@ require("./controllers/questions-controller")(app);
 require("./controllers/quiz-attempts-controller")(app);
 require("./controllers/users-controller")(app);
 
-const uri = process.env.MONGODB_URI;
-require('dotenv').config();
+//const uri = process.env.MONGODB_URI;
 app.listen(process.env.PORT || 3001)
