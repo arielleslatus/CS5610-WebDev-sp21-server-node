@@ -5,10 +5,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-//require('dotenv').config({ path: '.env' });
 
-//const mongoose = require('mongoose');
-//mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
@@ -18,7 +15,8 @@ const mongoose = require('mongoose'); mongoose.connect(MONGODB_URI,{useNewUrlP
 
 app.listen(process.env.PORT || 3001)
 
-
+var cors = require('cors');
+app.use(cors());
 
 
 const session = require('express-session');
@@ -32,7 +30,7 @@ app.use(session({
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers',
-               'Content-Type, X-Requested-With, Origin');
+               'Content-Type, X-Requested-With, Origin, Authorization');
     res.header('Access-Control-Allow-Methods',
                'GET, POST, PUT, PATCH, DELETE, OPTIONS');
     res.header("Access-Control-Allow-Credentials", "true");
@@ -47,5 +45,4 @@ require("./controllers/questions-controller")(app);
 require("./controllers/quiz-attempts-controller")(app);
 require("./controllers/users-controller")(app);
 
-//const uri = process.env.MONGODB_URI;
 
