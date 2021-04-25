@@ -5,6 +5,16 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers',
+               'Content-Type, X-Requested-With, Origin, Authorization');
+    res.header('Access-Control-Allow-Methods',
+               'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+    res.header("Access-Control-Allow-Credentials", "true");
+    next();
+});
+
 
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
@@ -27,15 +37,7 @@ app.use(session({
     //cookie: { secure: true }
 }));
 
-app.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers',
-               'Content-Type, X-Requested-With, Origin, Authorization');
-    res.header('Access-Control-Allow-Methods',
-               'GET, POST, PUT, PATCH, DELETE, OPTIONS');
-    res.header("Access-Control-Allow-Credentials", "true");
-    next();
-});
+
 
 const demos = require('./controllers/demo-controller');
 demos(app);
